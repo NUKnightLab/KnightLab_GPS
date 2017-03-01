@@ -9,9 +9,9 @@ https://github.com/adafruit/Adafruit_GPS/blob/master/Adafruit_GPS.h)
 
 
 ## To use:
-  - include <KnightLab_GPS.h>
-  - call setupGPS() in your setup
-  - read values from GPS (see Adafruit_GPS class for details)
+  - include `<KnightLab_GPS.h>`
+  - call `setupGPS()` in your setup
+  - read values from GPS (see `Adafruit_GPS` class for details)
 
 ## Notes:
   - define DEBUG for small amount of Serial output
@@ -20,5 +20,5 @@ https://github.com/adafruit/Adafruit_GPS/blob/master/Adafruit_GPS.h)
 
 
 This library has been extracted from the Knight Lab Sensor Grid project. Design is
-pretty specific to the needs of that project, but has no sensor_grid dependencies.
+pretty specific to the needs of that project, but has no Sensor Grid dependencies.
 If you find it useful, let us know.
