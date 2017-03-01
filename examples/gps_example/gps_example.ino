@@ -5,15 +5,14 @@ void displayGPS()
 {
     /* other properties are available. See:
      * https://github.com/adafruit/Adafruit_GPS/blob/master/Adafruit_GPS.cpp
-     *  TODO: better formatting
      */
-    Serial.print("DT: 20");
-    Serial.print(GPS.year); Serial.print("-");
-    Serial.print(GPS.month); Serial.print("-");
-    Serial.print(GPS.day); Serial.print("T");
-    Serial.print(GPS.hour); Serial.print(":");
-    Serial.print(GPS.minute); Serial.print(":");
-    Serial.println(GPS.seconds);
+    Serial.print("DT: ");
+    Serial.print(GPS.month, DEC); Serial.print("/");
+    Serial.print(GPS.day, DEC); Serial.print("/");
+    Serial.print(GPS.year, DEC); Serial.print(" ");
+    Serial.print(GPS.hour, DEC); Serial.print(":");
+    Serial.print(GPS.minute, DEC); Serial.print(":");
+    Serial.println(GPS.seconds, DEC);
     Serial.print("GPS fix: "); Serial.print(GPS.fix);
     Serial.print("; LAT: "); Serial.print(GPS.latitudeDegrees);
     Serial.print("; LON: "); Serial.println(GPS.longitudeDegrees);
