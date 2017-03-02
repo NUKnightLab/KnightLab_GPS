@@ -6,6 +6,7 @@ void displayGPS()
     /* other properties are available. See:
      * https://github.com/adafruit/Adafruit_GPS/blob/master/Adafruit_GPS.cpp
      */
+    Serial.println(GPS.lastNMEA());
     Serial.print("DT: ");
     Serial.print(GPS.month, DEC); Serial.print("/");
     Serial.print(GPS.day, DEC); Serial.print("/");
