@@ -86,10 +86,11 @@ static void _setupGPSInterrupt() {
     TC->WAVE.reg |= TCC_WAVE_WAVEGEN_NFRQ;   // Set wave form configuration
     while (TC->SYNCBUSY.bit.WAVE == 1); // wait for sync
     //TC->PER.reg = 0xFFFF;              // Set counter Top using the PER register
-    TC->PER.reg = 0x1111; // This may need some tweaking for a good GPS read
+    TC->PER.reg = 0xBC;
     while (TC->SYNCBUSY.bit.PER == 1); // wait for sync
-    TC->CC[0].reg = 0xFFF;
-    while (TC->SYNCBUSY.bit.CC0 == 1); // wait for sync
+    //TC->CC[0].reg = 0xFFF;
+    //TC->CC[0].reg = 0x0001;
+    //while (TC->SYNCBUSY.bit.CC0 == 1); // wait for sync
     TC->INTENSET.reg = 0;                 // disable all interrupts
     TC->INTENSET.bit.OVF = 1;          // enable overfollow
     TC->INTENSET.bit.MC0 = 1;          // enable compare match to CC0
@@ -101,11 +102,11 @@ static void _setupGPSInterrupt() {
 void TCC0_Handler(){
     Tcc* TC = (Tcc*) TCC0;       // get timer struct
     if (TC->INTFLAG.bit.OVF == 1) {  // A overflow caused the interrupt
+        _readGPS();
         TC->INTFLAG.bit.OVF = 1;    // writing a one clears the flag ovf flag
     }
     if (TC->INTFLAG.bit.MC0 == 1) {  // A compare to cc0 caused the interrupt
-        TC->INTFLAG.bit.MC0 = 1;    // writing a one clears the flag ovf flag
-        _readGPS();
+        TC->INTFLAG.bit.MC0 = 1;
     }
 }
 #else
